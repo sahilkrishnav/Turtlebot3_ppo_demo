@@ -51,8 +51,8 @@ class RobotController(Node):
 
         self.publisher_.publish(vel_msg)
 
-def main():
-    rclpy.init()
+def main(args=None):
+    rclpy.init(args=args)
     node = RobotController()
     rclpy.spin(node)
     node.destroy_node()
