@@ -20,12 +20,12 @@ class RobotController(Node):
 
         self.current_pose = None
         self.target_pose = [1.0, 1.0]  # Example target in meters
-        self.timer = self.create_timer(0.1, self.control_loop)  
+        self.timer = self.create_timer(0.1, self.main)  
 
     def pose_callback(self, msg):
         self.current_pose = msg
 
-    def control_loop(self):
+    def main(self):
         if self.current_pose is None:
             return
 
