@@ -27,7 +27,7 @@ class RobotController(Node):
     def control_loop(self):
         if self.current_pose is None:
             return
-
+        print(self.current_pose)
         x = self.current_pose.pose.position.x
         y = self.current_pose.pose.position.y
 
