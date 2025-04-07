@@ -1,0 +1,19 @@
+[0.557s] Invoking command in '/home/trg/Turtlebot3_ppo_demo/src': PYTHONPATH=/home/trg/Turtlebot3_ppo_demo/build/turtlebot3_ppo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/trg/Turtlebot3_ppo_demo/install/turtlebot3_ppo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/turtlebot3_ppo build --build-base /home/trg/Turtlebot3_ppo_demo/build/turtlebot3_ppo/build install --record /home/trg/Turtlebot3_ppo_demo/build/turtlebot3_ppo/install.log --single-version-externally-managed install_data
+[0.651s] /home/trg/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:270: UserWarning: Unknown distribution option: 'tests_require'
+[0.651s]   warnings.warn(msg)
+[0.702s] running egg_info
+[0.710s] creating ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info
+[0.710s] writing ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/PKG-INFO
+[0.711s] writing dependency_links to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/dependency_links.txt
+[0.711s] writing entry points to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/entry_points.txt
+[0.711s] writing requirements to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/requires.txt
+[0.711s] writing top-level names to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/top_level.txt
+[0.711s] writing manifest file '../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+[0.720s] reading manifest file '../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+[0.721s] writing manifest file '../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+[0.721s] running build
+[0.721s] running install
+[0.724s] running install_data
+[0.724s] creating /home/trg/Turtlebot3_ppo_demo/install/turtlebot3_ppo/share/ament_index/resource_index/packages
+[0.724s] error: can't copy 'resource/turtlebot3_ppo': doesn't exist or not a regular file
+[0.736s] Invoked command in '/home/trg/Turtlebot3_ppo_demo/src' returned '1': PYTHONPATH=/home/trg/Turtlebot3_ppo_demo/build/turtlebot3_ppo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/trg/Turtlebot3_ppo_demo/install/turtlebot3_ppo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/turtlebot3_ppo build --build-base /home/trg/Turtlebot3_ppo_demo/build/turtlebot3_ppo/build install --record /home/trg/Turtlebot3_ppo_demo/build/turtlebot3_ppo/install.log --single-version-externally-managed install_data

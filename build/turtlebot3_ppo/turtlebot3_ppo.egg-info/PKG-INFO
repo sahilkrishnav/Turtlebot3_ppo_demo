@@ -1,0 +1,13 @@
+Metadata-Version: 2.2
+Name: turtlebot3_ppo
+Version: 0.0.0
+Summary: Package for training PPO on TurtleBot3 in ROS2 Humble
+Maintainer: mj
+Maintainer-email: minjae5@illinois.edu
+License: Apache License 2.0
+Requires-Dist: setuptools
+Dynamic: license
+Dynamic: maintainer
+Dynamic: maintainer-email
+Dynamic: requires-dist
+Dynamic: summary

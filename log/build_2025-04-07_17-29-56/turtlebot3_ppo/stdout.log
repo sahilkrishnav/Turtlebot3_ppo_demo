@@ -1,0 +1,23 @@
+running egg_info
+writing ../../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/PKG-INFO
+writing dependency_links to ../../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/dependency_links.txt
+writing entry points to ../../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/entry_points.txt
+writing requirements to ../../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/requires.txt
+writing top-level names to ../../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/top_level.txt
+reading manifest file '../../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+writing manifest file '../../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+running build
+running build_py
+copying turtlebot3_ppo/__init__.py -> /home/trg/Turtlebot3_ppo_demo/build/turtlebot3_ppo/build/lib/turtlebot3_ppo
+copying turtlebot3_ppo/robot_controller.py -> /home/trg/Turtlebot3_ppo_demo/build/turtlebot3_ppo/build/lib/turtlebot3_ppo
+running install
+running install_lib
+running install_data
+copying resource/turtlebot3_ppo -> /home/trg/Turtlebot3_ppo_demo/install/turtlebot3_ppo/share/ament_index/resource_index/packages
+copying package.xml -> /home/trg/Turtlebot3_ppo_demo/install/turtlebot3_ppo/share/turtlebot3_ppo
+running install_egg_info
+removing '/home/trg/Turtlebot3_ppo_demo/install/turtlebot3_ppo/lib/python3.10/site-packages/turtlebot3_ppo-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/turtlebot3_ppo/turtlebot3_ppo.egg-info to /home/trg/Turtlebot3_ppo_demo/install/turtlebot3_ppo/lib/python3.10/site-packages/turtlebot3_ppo-0.0.0-py3.10.egg-info
+running install_scripts
+Installing robot_controller script to /home/trg/Turtlebot3_ppo_demo/install/turtlebot3_ppo/bin
+writing list of installed files to '/home/trg/Turtlebot3_ppo_demo/build/turtlebot3_ppo/install.log'

@@ -1,0 +1,22 @@
+[0.415s] Invoking command in '/home/trg/Turtlebot3_ppo_demo/src/turtlebot3_ppo': PYTHONPATH=/home/trg/Turtlebot3_ppo_demo/src/build/turtlebot3_ppo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/trg/Turtlebot3_ppo_demo/src/install/turtlebot3_ppo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/turtlebot3_ppo build --build-base /home/trg/Turtlebot3_ppo_demo/src/build/turtlebot3_ppo/build install --record /home/trg/Turtlebot3_ppo_demo/src/build/turtlebot3_ppo/install.log --single-version-externally-managed install_data
+[0.507s] /home/trg/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:270: UserWarning: Unknown distribution option: 'tests_require'
+[0.507s]   warnings.warn(msg)
+[0.559s] running egg_info
+[0.567s] writing ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/PKG-INFO
+[0.568s] writing dependency_links to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/dependency_links.txt
+[0.568s] writing entry points to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/entry_points.txt
+[0.568s] writing requirements to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/requires.txt
+[0.568s] writing top-level names to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/top_level.txt
+[0.577s] reading manifest file '../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+[0.578s] writing manifest file '../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+[0.578s] running build
+[0.578s] running install
+[0.581s] running install_data
+[0.581s] copying resource/turtlebot3_ppo -> /home/trg/Turtlebot3_ppo_demo/src/install/turtlebot3_ppo/share/ament_index/resource_index/packages
+[0.581s] copying package.xml -> /home/trg/Turtlebot3_ppo_demo/src/install/turtlebot3_ppo/share/turtlebot3_ppo
+[0.581s] running install_egg_info
+[0.599s] Copying ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info to /home/trg/Turtlebot3_ppo_demo/src/install/turtlebot3_ppo/lib/python3.10/site-packages/turtlebot3_ppo-0.0.0-py3.10.egg-info
+[0.599s] running install_scripts
+[0.671s] Installing robot_controller script to /home/trg/Turtlebot3_ppo_demo/src/install/turtlebot3_ppo/bin
+[0.671s] writing list of installed files to '/home/trg/Turtlebot3_ppo_demo/src/build/turtlebot3_ppo/install.log'
+[0.685s] Invoked command in '/home/trg/Turtlebot3_ppo_demo/src/turtlebot3_ppo' returned '0': PYTHONPATH=/home/trg/Turtlebot3_ppo_demo/src/build/turtlebot3_ppo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/trg/Turtlebot3_ppo_demo/src/install/turtlebot3_ppo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/turtlebot3_ppo build --build-base /home/trg/Turtlebot3_ppo_demo/src/build/turtlebot3_ppo/build install --record /home/trg/Turtlebot3_ppo_demo/src/build/turtlebot3_ppo/install.log --single-version-externally-managed install_data

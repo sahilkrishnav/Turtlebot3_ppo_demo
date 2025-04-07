@@ -1,0 +1,17 @@
+/home/trg/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:270: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+running egg_info
+creating ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info
+writing ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/PKG-INFO
+writing dependency_links to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/dependency_links.txt
+writing entry points to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/entry_points.txt
+writing requirements to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/requires.txt
+writing top-level names to ../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/top_level.txt
+writing manifest file '../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+reading manifest file '../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+writing manifest file '../build/turtlebot3_ppo/turtlebot3_ppo.egg-info/SOURCES.txt'
+running build
+running install
+running install_data
+creating /home/trg/Turtlebot3_ppo_demo/install/turtlebot3_ppo/share/ament_index/resource_index/packages
+error: can't copy 'resource/turtlebot3_ppo': doesn't exist or not a regular file
