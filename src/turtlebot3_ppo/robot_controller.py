@@ -9,7 +9,6 @@ class RobotController(Node):
     def __init__(self):
         super().__init__('robot_controller')
 
-        # Set this to match your marker deck name
         self.subscription = self.create_subscription(
             PoseStamped,
             'qualysis/tb3_3',  # or whatever your marker_deck_name is
@@ -20,12 +19,12 @@ class RobotController(Node):
 
         self.current_pose = None
         self.target_pose = [1.0, 1.0]  # Example target in meters
-        self.timer = self.create_timer(0.1, self.main)  
+        self.timer = self.create_timer(0.1, self.control_loop)  
 
     def pose_callback(self, msg):
         self.current_pose = msg
 
-    def main(self):
+    def control_loop(self):
         if self.current_pose is None:
             return
 
@@ -51,3 +50,13 @@ class RobotController(Node):
             vel_msg.linear.x = 0.5 * distance
 
         self.publisher_.publish(vel_msg)
+
+def main():
+    rclpy.init()
+    node = RobotController()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
