@@ -1,76 +1,84 @@
 import rclpy
 from rclpy.node import Node
-from nav_msgs.msg import Odometry
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import PoseStamped, Twist
 import math
-import tf_transformations
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSDurabilityPolicy, QoSHistoryPolicy
 
-class RobotController(Node):
+class PIDController(Node):
     def __init__(self):
-        super().__init__('robot_controller')
+        super().__init__('pid_controller')
 
-        self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
-        self.subscription = self.create_subscription(
-            Odometry,
-            '/odom',  # Assuming you are subscribing to the /odom topic for pose info
-            self.pose_callback,
-            10)
+        # Subscription to the PoseStamped topic        
+        qos = QoSProfile(depth=1, reliability=QoSReliabilityPolicy.BEST_EFFORT, durability=QoSDurabilityPolicy.VOLATILE, history=QoSHistoryPolicy.KEEP_LAST)
+        self.qualisys_subscriber = self.create_subscription(PoseStamped, '/qualysis/tb3_3', self.qualisys_callback, qos)
 
-        self.current_pose = None
-        self.target_pose = [2.0, 2.0]  # Example target in meters (x, y)
-        self.timer = self.create_timer(0.1, self.control_loop)
+        # Publisher for velocity commands
+        self.cmd_vel_publisher = self.create_publisher(Twist, '/cmd_vel', 10)
 
-    def pose_callback(self, msg):
-        self.current_pose = msg.pose.pose
+        # PID parameters for linear and angular velocities
+        self.kp_linear = 1.0
+        self.kp_angular = 6.0
 
-    def control_loop(self):
-        if self.current_pose is None:
-            return
+        # Initialize PID variables
+        self.threshold_distance = 0.05  # Threshold to stop
 
-        # Get current position
-        x = self.current_pose.position.x
-        y = self.current_pose.position.y
+        # Target goal
+        self.goal_x = 1.0
+        self.goal_y = 1.0
 
-        # Extract yaw from quaternion (orientation)
-        q = self.current_pose.orientation
-        _, _, yaw = tf_transformations.euler_from_quaternion([q.x, q.y, q.z, q.w])
+    def angle_difference(self, desired_angle, current_angle):
+        error = desired_angle - current_angle
+        return (error + math.pi) % (2 * math.pi) - math.pi
 
-        # Calculate the distance and angle to the target
-        dx = self.target_pose[0] - x
-        dy = self.target_pose[1] - y
+    def navigate_to_goal(self, current_x, current_y, current_theta):
+        # Compute distance error
+        error_x = self.goal_x - current_x
+        error_y = self.goal_y - current_y
+        distance_error = math.hypot(error_x, error_y)
+        target_theta = math.atan2(error_y, error_x)
 
-        distance = math.sqrt(dx**2 + dy**2)
-        angle_to_goal = math.atan2(dy, dx)
+        # Compute heading error
+        heading_error = self.angle_difference(target_theta, current_theta)
 
-        # Calculate yaw error (angle between current orientation and desired direction)
-        yaw_error = angle_to_goal - yaw
-        # Normalize yaw error to [-pi, pi]
-        yaw_error = math.atan2(math.sin(yaw_error), math.cos(yaw_error))
+        self.get_logger().info(f"Distance error [m]: {distance_error}")
+        self.get_logger().info(f"Heading error [degrees]: {heading_error * 180 / math.pi}")
 
-        vel_msg = Twist()
+        if distance_error <= self.threshold_distance:
+            return 0.0, 0.0  # Stop if goal is reached
 
-        # If yaw error is significant, rotate the robot to face the goal
-        if abs(yaw_error) > 0.1:
-            vel_msg.angular.z = 0.5 * yaw_error
-        # If not facing the goal, move forward
-        elif distance > 0.05:
-            vel_msg.linear.x = 0.2 * distance  # Adjust speed proportional to distance
-        else:
-            # If target is reached (distance is small enough), stop the robot
-            vel_msg.linear.x = 0.0
-            vel_msg.angular.z = 0.0
+        # Control commands
+        control_linear = self.kp_linear * distance_error
+        control_angular = self.kp_angular * heading_error
 
-        # Publish the velocity command
-        self.publisher_.publish(vel_msg)
+        return control_linear, control_angular
 
-        # Print for debugging
-        print(f"dx: {dx}, dy: {dy}, yaw_error: {yaw_error}, vel: {vel_msg}")
+    def qualisys_callback(self, msg):
+        current_x = msg.pose.position.x
+        current_y = msg.pose.position.y
+        current_theta = msg.pose.orientation.z
+
+        # Get control commands
+        control_linear, control_angular = self.navigate_to_goal(current_x, current_y, current_theta)
+
+        # Create and publish Twist message
+        twist_msg = Twist()
+        twist_msg.linear.x = control_linear
+        twist_msg.angular.z = control_angular
+
+        # Limit velocities
+        max_linear_speed = 0.21  # Max linear speed of TurtleBot3
+        max_angular_speed = 0.85  # Max angular speed of TurtleBot3
+
+        twist_msg.linear.x = max(min(twist_msg.linear.x, max_linear_speed), -max_linear_speed)
+        twist_msg.angular.z = max(min(twist_msg.angular.z, max_angular_speed), -max_angular_speed)
+
+        self.cmd_vel_publisher.publish(twist_msg)
 
 def main(args=None):
     rclpy.init(args=args)
-    node = RobotController()
-    rclpy.spin(node)
-    node.destroy_node()
+    pid_controller = PIDController()
+    rclpy.spin(pid_controller)
+    pid_controller.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

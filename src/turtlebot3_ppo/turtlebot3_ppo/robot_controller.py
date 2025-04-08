@@ -57,8 +57,6 @@ class PIDController(Node):
         current_y = msg.pose.position.y
         current_theta = msg.pose.orientation.z
 
-        print(current_x, current_y)
-
         # Get control commands
         control_linear, control_angular = self.navigate_to_goal(current_x, current_y, current_theta)
 
